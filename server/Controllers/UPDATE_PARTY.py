@@ -4,9 +4,9 @@ def execute(server, iterator, source):
     chars = party['chars']
     
     aliveteams = {}
-    for charid in chars.keys():
+    for charid in list(chars.keys()):
         if chars[charid]['hp'] > 0:
-            if aliveteams.has_key(chars[charid]['team']):
+            if chars[charid]['team'] in aliveteams:
                 aliveteams[chars[charid]['team']] = aliveteams[chars[charid]['team']] + 1
             else:
                 aliveteams[chars[charid]['team']] = 1
@@ -20,14 +20,14 @@ def execute(server, iterator, source):
         server.updateAllPartyLists()
         return
 
-    for charid in chars.keys():
+    for charid in list(chars.keys()):
         party['yourturn'] = int(chars[charid]['team']) == int(server.sessions[source]['player'])
         if chars[charid]['active']:
             server.send.PARTY_UPDATED(party['yourturn'], chars, source)
             return
     
     while True:
-        for charid in chars.keys():
+        for charid in list(chars.keys()):
             char = chars[charid]
             char['ct'] = char['ct'] + char['speed']
             if char['ct'] >= 100:

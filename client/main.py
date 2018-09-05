@@ -1,5 +1,6 @@
 from Config import *
-import direct.directbase.DirectStart
+from direct.showbase.ShowBase import ShowBase
+base = ShowBase()
 from panda3d.core import *
 from direct.gui.DirectGui import *
 from direct.task.Task import Task
@@ -58,13 +59,13 @@ class Client(object):
         if self.myConnection:
             self.cReader.addConnection(self.myConnection)
             self.send = Send(self.cManager, self.myConnection)
-            print 'Client listening on', IP, ':', PORT
+            print('Client listening on', IP, ':', PORT)
             taskMgr.add(self.tskReaderPolling, "Poll the connection reader")
 
             self.send.LOGIN_MESSAGE(login, password)
 
         else:
-            print 'Can\'t connect to server on', IP, ':', PORT
+            print('Can\'t connect to server on', IP, ':', PORT)
 
     # The battle begins
     def battle_init(self):
@@ -218,7 +219,7 @@ class Client(object):
         if self.charbars:
             self.charbars.hide()
 
-        if self.party['map']['tiles'][x][y][z].has_key('char'):
+        if 'char' in self.party['map']['tiles'][x][y][z]:
             charid = self.party['map']['tiles'][x][y][z]['char']
             char = self.party['chars'][charid]
             if self.subphase == 'attack':
@@ -299,4 +300,4 @@ class Client(object):
         return Task.cont
 
 Client()
-run()
+base.run()

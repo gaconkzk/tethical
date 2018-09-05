@@ -1,4 +1,5 @@
-from direct.distributed.PyDatagram import PyDatagram, ConnectionWriter
+from panda3d.core import ConnectionWriter
+from direct.distributed.PyDatagram import PyDatagram
 import json
 
 # Datagrams to be sent to the clients

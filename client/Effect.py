@@ -1,5 +1,5 @@
 from Config import *
-from pandac.PandaModules import PandaNode,NodePath,Camera,TextNode,GeomTristrips,Geom,GeomVertexFormat,GeomVertexData,GeomVertexWriter,GeomNode,TransformState,OrthographicLens,TextureStage,TexGenAttrib,PNMImage,Texture,ColorBlendAttrib,CardMaker,TransparencyAttrib
+from panda3d.core import PandaNode,NodePath,Camera,TextNode,GeomTristrips,Geom,GeomVertexFormat,GeomVertexData,GeomVertexWriter,GeomNode,TransformState,OrthographicLens,TextureStage,TexGenAttrib,PNMImage,Texture,ColorBlendAttrib,CardMaker,TransparencyAttrib
 from direct.interval.IntervalGlobal import *
 import xml.etree.cElementTree as etree
 import math
@@ -151,7 +151,7 @@ class Color:
         self.B = B
         self.A = A
     def printAsString(self):
-        print str(self.R)+", "+str(self.G)+", "+str(self.B)+", "+str(self.A)
+        print(str(self.R)+", "+str(self.G)+", "+str(self.B)+", "+str(self.A))
 class Frame:
     bound = Bound(0, 0, 0, 0)
     s = 0
@@ -178,13 +178,13 @@ class Frame:
             self.color = Color(1,1,1,1)
         self.rotationZ = rotationZ
     def printAsString(self):
-        print "["+str(self)+"]::"
-        print "   Bound: ["+str(self.bound.X)+", "+str(self.bound.Y)+"; "+str(self.bound.Width)+"x"+str(self.bound.Height)+"],"
-        print "   (s, t; S, T): ["+str(self.s)+", "+str(self.t)+"; "+str(self.S)+", "+str(self.T)+"]," 
-        print "   Blend: '"+self.blendMode+"'," 
-        print "   Scale(x, y): ["+str(self.scaleX)+", "+str(self.scaleY)+"]," 
-        print "   Color(R, G, B, A): ["+str(self.color.R)+", "+str(self.color.G)+", "+str(self.color.B)+", "+str(self.color.A)+"]," 
-        print "   Rotation-Z: "+str(self.rotationZ)
+        print("["+str(self)+"]::")
+        print("   Bound: ["+str(self.bound.X)+", "+str(self.bound.Y)+"; "+str(self.bound.Width)+"x"+str(self.bound.Height)+"],")
+        print("   (s, t; S, T): ["+str(self.s)+", "+str(self.t)+"; "+str(self.S)+", "+str(self.T)+"],") 
+        print("   Blend: '"+self.blendMode+"',") 
+        print("   Scale(x, y): ["+str(self.scaleX)+", "+str(self.scaleY)+"],") 
+        print("   Color(R, G, B, A): ["+str(self.color.R)+", "+str(self.color.G)+", "+str(self.color.B)+", "+str(self.color.A)+"],") 
+        print("   Rotation-Z: "+str(self.rotationZ))
 
 class Effect:
     baseWidth = 0

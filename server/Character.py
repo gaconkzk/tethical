@@ -1,12 +1,12 @@
 from panda3d.core import loadPrcFile
-loadPrcFile("config.prc")
-from pandac.PandaModules import *
+loadPrcFile("../config.prc")
+from panda3d.core import *
 import json, random, os
 
 GAME = ConfigVariableString('game', 'fft').getValue()
 
 jobs = {}
-jobids = map( lambda m: m.split('.')[0], os.listdir(GAME+'/jobs'))
+jobids = [m.split('.')[0] for m in os.listdir(GAME+'/jobs')]
 for jobid in jobids:
     f = open(GAME+'/jobs/'+jobid+'.json', 'r')
     jobs[jobid] = json.loads(f.read())
@@ -20,7 +20,7 @@ def Coords( party, charid ):
                 
                 tile = party['map']['tiles'][x][y][z]
                 
-                if tile and tile.has_key('char') and int(tile['char']) == int(charid):
+                if tile and 'char' in tile and int(tile['char']) == int(charid):
                     return (x, y, z)
 
 def Random( charid, teamid=0, direction=0 ):

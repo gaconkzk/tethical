@@ -1,8 +1,9 @@
 from Config import *
-import direct.directbase.DirectStart
+from direct.showbase.ShowBase import ShowBase
+base = ShowBase()
 from direct.gui.OnscreenText import OnscreenText 
 from direct.gui.DirectGui import *
-from pandac.PandaModules import *
+from panda3d.core import *
 from direct.interval.IntervalGlobal import *
 import GUI
 import os
@@ -132,4 +133,4 @@ def foo():
 
 GUI.ActionPreview(char1, char2, 25, 96, foo, foo)
 
-run()
+base.run()

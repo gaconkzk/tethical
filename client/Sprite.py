@@ -1,6 +1,6 @@
 from Config import *
 from panda3d.core import NodePath, TransparencyAttrib
-from pandac.PandaModules import Texture, TextureStage
+from panda3d.core import Texture, TextureStage
 import Sprite2d
 
 class Sprite:

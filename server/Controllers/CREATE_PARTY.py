@@ -23,5 +23,5 @@ def execute(server, iterator, source):
     
     server.updateAllPartyLists()
     
-    print server.sessions[source]['login'], "created the party", name, "using the map", mapname
+    print(server.sessions[source]['login'], "created the party", name, "using the map", mapname)
     server.send.PARTY_CREATED(party, source)

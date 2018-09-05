@@ -12,7 +12,7 @@ def getadjacentwalkables( party, charid, tiles ):
                 if t2 and x2 >= 0 and y2 >= 0:
                     for z2,t3 in enumerate(t2):
                         if t3 \
-                        and (not t3.has_key('char') or party['chars'][t3['char']]['team'] ==  party['chars'][charid]['team'] or party['chars'][t3['char']]['hp'] == 0 ) \
+                        and ('char' not in t3 or party['chars'][t3['char']]['team'] ==  party['chars'][charid]['team'] or party['chars'][t3['char']]['hp'] == 0 ) \
                         and t3['walkable'] and t3['selectable'] \
                         and math.fabs(z2-z1) <= party['chars'][charid]['jump']:
                             walkables.append( (x2, y2, z2) )
@@ -41,7 +41,7 @@ def GetWalkables( party, charid ):
     filtered_walkables = []
     for walkable in walkables:
         x, y, z = walkable
-        if not party['map']['tiles'][x][y][z].has_key('char'):
+        if 'char' not in party['map']['tiles'][x][y][z]:
             filtered_walkables.append( walkable )
     walkables = filtered_walkables
 
@@ -77,7 +77,7 @@ def GetPath ( party, charid, x1, y1, z1, x2, y2, z2 ):
 
 def buildtree ( party, charid, tree, moves, dest ):
 
-    for k1 in tree.keys():
+    for k1 in list(tree.keys()):
 
         for adj in getadjacentwalkables( party, charid, [ tuple(map(int,k1.split('-'))) ] ):
             k2 = '-'.join( map( str, adj ) )
@@ -93,7 +93,7 @@ def buildtree ( party, charid, tree, moves, dest ):
 
 def findpathes ( tree, p, paths ):
 
-    for k in tree.keys():
+    for k in list(tree.keys()):
         if tree[k] == 'X':
             paths.append( p + [k] )
         else:

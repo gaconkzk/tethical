@@ -1,5 +1,6 @@
 from direct.showbase.DirectObject import DirectObject
-import direct.directbase.DirectStart
+from direct.showbase.ShowBase import ShowBase
+base = ShowBase()
 import json, sys, getopt, inspect, os, imp
 # Tethical's Drawing-Related Features
 from BattleGraphics import *
@@ -24,10 +25,10 @@ if argv is None:
 try:
 	try:
 		opts, args = getopt.getopt(argv[1:], "h", ["help"])
-	except getopt.error, msg:
+	except getopt.error as msg:
 		raise UsageError(msg)
-except UsageError, err:
-	print >>sys.stderr, err.msg
+except UsageError as err:
+	print(err.msg, file=sys.stderr)
 # Running: 
 #
 #	python C:\Tethical\master\client\Tests.py 
@@ -91,18 +92,18 @@ if len(argv[1:]) > 0:
 				# Load event.
 				imp.load_source('event', EVENT)
 				#
-				print ""
-				print ""
-				print "Controls: "
-				print ""
-				print "  G:	Rotate Map Left"
-				print "  F:	Rotate Map Right"
-				print "  H:	Ascend/Descend"
-				print "  D:	Zoom In/Zoom Out"
-				print "  ESC:	End Test"
+				print("")
+				print("")
+				print("Controls: ")
+				print("")
+				print("  G:	Rotate Map Left")
+				print("  F:	Rotate Map Right")
+				print("  H:	Ascend/Descend")
+				print("  D:	Zoom In/Zoom Out")
+				print("  ESC:	End Test")
 			except:
-				print 'Event could not be found at '+str(EVENT)
+				print('Event could not be found at '+str(EVENT))
 		pass
 	pass
 #
-run()
+base.run()

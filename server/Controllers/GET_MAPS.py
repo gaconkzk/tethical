@@ -1,6 +1,6 @@
 from panda3d.core import loadPrcFile
 loadPrcFile("config.prc")
-from pandac.PandaModules import ConfigVariableString
+from panda3d.core import ConfigVariableString
 import os
 import Map
 GAME = ConfigVariableString('game', 'fft').getValue()
@@ -9,7 +9,7 @@ GAME = ConfigVariableString('game', 'fft').getValue()
 def execute(server, iterator, source):
     server.playersinlobby.remove(source)
 
-    mapnames = map( lambda m: m.split('.')[0], os.listdir(GAME+'/maps'))
+    mapnames = [m.split('.')[0] for m in os.listdir(GAME+'/maps')]
 
     maps = []
     for mapname in mapnames:

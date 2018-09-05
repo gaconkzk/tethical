@@ -5,7 +5,7 @@ def execute(server, iterator, source):
     server.playersinlobby.append(source)
 
     parties = deepcopy(server.parties)
-    for party in parties.values():
+    for party in list(parties.values()):
         del party['map']['tiles']
 
     server.send.PARTY_LIST(parties, source)

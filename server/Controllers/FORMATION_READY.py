@@ -14,7 +14,7 @@ def execute(server, iterator, source):
                 x, y, z = line['coords']
                 charid = line['charid']
                 party['map']['tiles'][x][y][z]['char'] = str(charid)
-                char = filter(lambda x: x['id'] == charid, server.chars)[0]
+                char = [x for x in server.chars if x['id'] == charid][0]
                 char['team'] = team
                 char['direction'] = line['direction']
                 party['chars'][str(charid)] = char

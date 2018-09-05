@@ -9,15 +9,15 @@ def execute(server, iterator, source):
     # we authenticate the client if login == password
     if login != password:
         server.send.LOGIN_FAIL('Wrong credentials.', source)
-    elif server.sessions.has_key(source):
+    elif source in server.sessions:
         server.send.LOGIN_FAIL('Already logged in.', source)
-    elif login in server.players.keys():
+    elif login in list(server.players.keys()):
         server.send.LOGIN_FAIL('Username already in use.', source)
     else:
         server.players[login] = source
         server.sessions[source] = {}
         server.sessions[source]['login'] = login
-        print login, 'logged in.'
+        print(login, 'logged in.')
         # since the server code is not connected to the database yet,
         # we generate a random team for each player
         server.sessions[source]['characters'] = []

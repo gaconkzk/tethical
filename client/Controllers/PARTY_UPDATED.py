@@ -17,7 +17,7 @@ def execute(client, iterator):
         for y,ys in enumerate(xs):
             for z,zs in enumerate(ys):
                 if not client.party['map']['tiles'][x][y][z] is None:
-                    if client.party['map']['tiles'][x][y][z].has_key('char') and client.party['map']['tiles'][x][y][z]['char'] != 0:
+                    if 'char' in client.party['map']['tiles'][x][y][z] and client.party['map']['tiles'][x][y][z]['char'] != 0:
                         charid = client.party['map']['tiles'][x][y][z]['char']
                         char = client.party['chars'][charid]
 

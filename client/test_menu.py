@@ -1,15 +1,16 @@
 from Config import *
-import direct.directbase.DirectStart
+from direct.showbase.ShowBase import ShowBase
+base = ShowBase()
 from direct.gui.OnscreenText import OnscreenText 
 from direct.gui.DirectGui import *
-from pandac.PandaModules import *
+from panda3d.core import *
 import GUI
 
 def exemplecallback(text):
-    print "You clicked the row #"+str(text)
+    print("You clicked the row #"+str(text))
 
 def cancelcallback():
-    print "Bye"
+    print("Bye")
 
 GUI.Blueprint('menu0')
 
@@ -79,4 +80,4 @@ GUI.ScrollableList('list', 3.0, 31.0, 206.0, 148.0, 23, columns, rows, 8, cancel
 
 # GUI.ScrollableList('list', -31, 35, 170.0, 148.0, 23, columns, rows, 8, cancelcallback)
 
-run()
+base.run()

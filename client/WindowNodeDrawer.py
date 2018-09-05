@@ -1,6 +1,5 @@
-import direct.directbase.DirectStart
 from direct.gui.DirectGui import *
-from pandac.PandaModules import *
+from panda3d.core import *
 from Config import *
 
 v = 1.0/120.0

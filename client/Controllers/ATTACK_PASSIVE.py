@@ -8,7 +8,7 @@ def execute(client, iterator):
     damages = iterator.getUint8()
     attackables = json.loads(iterator.getString())
 
-    print damages
+    print(damages)
     target = client.party['chars'][targetid]
     target['hp'] = target['hp'] - damages
     if target['hp'] < 0:

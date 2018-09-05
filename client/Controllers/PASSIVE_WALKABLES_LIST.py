@@ -9,5 +9,5 @@ def execute(client, iterator):
         client.subphase = 'passivewalkables'
     else:
         #TODO: show message "no walkable tile"
-        print "no walkable tile"
+        print("no walkable tile")
         client.send.UPDATE_PARTY()

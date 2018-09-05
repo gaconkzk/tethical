@@ -1,4 +1,4 @@
-from pandac.PandaModules import NodePath, PNMImageHeader, PNMImage, Filename, CardMaker, TextureStage, Texture, TransparencyAttrib
+from panda3d.core import NodePath, PNMImageHeader, PNMImage, Filename, CardMaker, TextureStage, Texture, TransparencyAttrib
 from math import log, modf
 
 class Sprite2d:
@@ -69,13 +69,13 @@ class Sprite2d:
         # Make a filepath
         self.imgFile = Filename(image_path)
         if self.imgFile.empty():
-            raise IOError, "File not found"
+            raise IOError("File not found")
        
         # Instead of loading it outright, check with the PNMImageHeader if we can open
         # the file.
         imgHead = PNMImageHeader()
         if not imgHead.readHeader(self.imgFile):
-            raise IOError, "PNMImageHeader could not read file. Try using absolute filepaths"
+            raise IOError("PNMImageHeader could not read file. Try using absolute filepaths")
        
         # Load the image with a PNMImage
         image = PNMImage()
@@ -85,8 +85,8 @@ class Sprite2d:
         self.sizeY = image.getYSize()
        
         self.frames = []
-        for rowIdx in xrange(self.rows):
-            for colIdx in xrange(self.cols):
+        for rowIdx in range(self.rows):
+            for colIdx in range(self.cols):
                 self.frames.append(Sprite2d.Cell(colIdx, rowIdx))
        
         # We need to find the power of two size for the another PNMImage

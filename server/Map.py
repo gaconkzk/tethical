@@ -1,6 +1,6 @@
 from panda3d.core import loadPrcFile
 loadPrcFile("config.prc")
-from pandac.PandaModules import *
+from panda3d.core import *
 import json
 
 GAME = ConfigVariableString('game', 'fft').getValue()

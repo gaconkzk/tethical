@@ -1,12 +1,11 @@
 from Config import *
-import direct.directbase.DirectStart
 from direct.showbase import DirectObject
 from direct.gui.OnscreenText import OnscreenText 
 from direct.gui.DirectGui import *
 from direct.task import Task
 from direct.actor import Actor
 from direct.interval.IntervalGlobal import *
-from pandac.PandaModules import *
+from panda3d.core import *
 import Sprite
 import functools
 from WindowNodeDrawer import WindowNodeDrawer
@@ -181,8 +180,13 @@ class PartyListWindow(DirectObject.DirectObject):
         tex = loader.loadTexture(GAME+'/textures/gui/parties_window.png')
         tex.setMagfilter(Texture.FTNearest)
         tex.setMinfilter(Texture.FTNearest)
-    
-        self.frame = DirectFrame( frameTexture = tex, color = (1, 1, 1, 1), frameSize = ( -v*128.0, v*128.0, -v*128.0, v*128.0 ), scale=0.1 )
+
+        self.frame = DirectFrame( 
+            frameTexture = tex, 
+            color = (1, 1, 1, 1), 
+            frameSize = ( -v*128.0, v*128.0, -v*128.0, v*128.0 ), 
+            scale=0.1 )
+
         self.frame.setTransparency(True)
         
         cptexture = loader.loadTexture(GAME+'/textures/gui/create_party.png')
@@ -1936,7 +1940,7 @@ class Formation(DirectObject.DirectObject):
             
                 if self.tiles[self.cux][self.cuy]['char']:
                 
-                    print 'Switch verticaly'
+                    print('Switch verticaly')
                     self.sprites[self.cux][self.cuy].node.removeNode()
                     self.sprites[self.cux][self.cuy] = Sprite.Sprite(GAME+'/textures/sprites/'+self.char['sprite']+'.png', 1)
                     self.sprites[self.cux][self.cuy].animation = 'stand'
@@ -1949,11 +1953,11 @@ class Formation(DirectObject.DirectObject):
 
                 else:
                 
-                    print 'Place'
+                    print('Place')
             
                     if self.remaining > 0:
                     
-                        print 'Placed successfully'
+                        print('Placed successfully')
                         self.sprites[self.cux][self.cuy] = Sprite.Sprite(GAME+'/textures/sprites/'+self.char['sprite']+'.png', 1)
                         self.sprites[self.cux][self.cuy].animation = 'stand'
                         self.sprites[self.cux][self.cuy].node.setPos(self.cux-2, self.cuy-2, .33+0.025)
@@ -1969,7 +1973,7 @@ class Formation(DirectObject.DirectObject):
 
                     if self.tiles[self.cux][self.cuy]['char'] == self.char:
                 
-                        print 'Remove'
+                        print('Remove')
                         self.sprites[self.cux][self.cuy].node.removeNode()
                         self.char['placed'] = False
                         self.tiles[self.cux][self.cuy]['char']['placed'] = False
@@ -1978,7 +1982,7 @@ class Formation(DirectObject.DirectObject):
                     
                     else:
 
-                        print 'Switch horizontaly'
+                        print('Switch horizontaly')
                         ox = oy = oc = None
                         
                         # remove the char at destination
@@ -2019,7 +2023,7 @@ class Formation(DirectObject.DirectObject):
 
                 else:
 
-                    print 'Move'
+                    print('Move')
 
                     for x,l in enumerate(self.tiles):
                         for y,t in enumerate(l):

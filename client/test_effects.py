@@ -1,7 +1,7 @@
 from Config import *
-import direct.directbase.DirectStart
+from direct.showbase.ShowBase import ShowBase
+base = ShowBase()
 from direct.gui.OnscreenText import OnscreenText
-from pandac.PandaModules import PandaNode,NodePath,Camera,TextNode,GeomTristrips,Geom,GeomVertexFormat,GeomVertexData,GeomVertexWriter,GeomNode,TransformState,OrthographicLens,TextureStage,TexGenAttrib,PNMImage,Texture,ColorBlendAttrib
 from panda3d.core import *
 from direct.gui.DirectGui import *
 from direct.interval.IntervalGlobal import *
@@ -68,4 +68,4 @@ Sequence(
     #Effect.Effect('ice.fft-E024.bmp', sprite1.node, True, False, [0,0,-2]).getSequence()
 ).loop()
 
-run()
+base.run()

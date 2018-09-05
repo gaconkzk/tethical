@@ -5,7 +5,7 @@ def execute(server, iterator, source):
     
     if len(party['players']) >= len(party['map']['tilesets']):
         parties = deepcopy(server.parties)
-        for party in parties.values():
+        for party in list(parties.values()):
             del party['map']['tiles']
         server.send.PARTY_JOIN_FAIL(name, parties, source)
     else:
@@ -14,7 +14,7 @@ def execute(server, iterator, source):
         server.sessions[source]['player'] = len(party['players'])-1
         server.playersinlobby.remove(source)
 
-        print server.sessions[source]['login'], "joined the party", name
+        print(server.sessions[source]['login'], "joined the party", name)
         server.send.PARTY_JOINED(party, source)
 
         if len(party['players']) == len(party['map']['tilesets']):

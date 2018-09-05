@@ -1,10 +1,11 @@
 from Config import *
-from pandac.PandaModules import *
+from panda3d.core import *
 from direct.interval.IntervalGlobal import *
 import GUI
 import os
 import os.path
 from operator import itemgetter, attrgetter
+from functools import cmp_to_key
 
 #THEME
 class Bar:
@@ -49,7 +50,7 @@ class Bar:
                     card.setTransparency(True)
                     self.barCard = card
             # Sort list for future comparison to value numbers.
-            self.textureList = sorted(self.textureList, cmp=self.orderByNumber)
+            self.textureList = sorted(self.textureList, key=cmp_to_key(self.orderByNumber))
             pass
 
     def orderByNumber(self, x, y):

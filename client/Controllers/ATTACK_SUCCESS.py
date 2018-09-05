@@ -6,7 +6,7 @@ def execute(client, iterator):
     targetid = iterator.getString()
     damages = iterator.getUint8()
 
-    print damages
+    print(damages)
     target = client.party['chars'][targetid]
     target['hp'] = target['hp'] - damages
     if target['hp'] < 0:

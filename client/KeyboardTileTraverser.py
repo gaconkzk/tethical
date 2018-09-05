@@ -81,7 +81,7 @@ class KeyboardTileTraverser(DirectObject):
                 self.client.charcard.hide()
 
             # we clicked an active walkable tile, let's move the character
-            if self.client.party['map']['tiles'][x][y][z].has_key('walkablezone'):
+            if 'walkablezone' in self.client.party['map']['tiles'][x][y][z]:
                 charid = self.client.party['map']['tiles'][x][y][z]['walkablezone']
                 self.client.clicked_snd.play()
                 dest = (x, y, z)
@@ -89,12 +89,12 @@ class KeyboardTileTraverser(DirectObject):
                 return
 
             # we clicked on a character
-            if self.client.party['map']['tiles'][x][y][z].has_key('char'):
+            if 'char' in self.client.party['map']['tiles'][x][y][z]:
                 charid = self.client.party['map']['tiles'][x][y][z]['char']
                 self.client.clicked_snd.play()
 
                 # we clicked on a target, let's attack it!
-                if self.client.party['map']['tiles'][x][y][z].has_key('attackablezone'):
+                if 'attackablezone' in self.client.party['map']['tiles'][x][y][z]:
                     attackable = self.client.party['map']['tiles'][x][y][z]['attackablezone']
                     self.ignoreAll()
                     if self.client.charbars:
@@ -127,7 +127,7 @@ class KeyboardTileTraverser(DirectObject):
 
             if self.client.subphase == 'free':
                 # if we clicked on a character
-                if self.client.party['map']['tiles'][x][y][z].has_key('char'):
+                if 'char' in self.client.party['map']['tiles'][x][y][z]:
                     charid = self.client.party['map']['tiles'][x][y][z]['char']
                     self.client.send.GET_PASSIVE_WALKABLES(charid)
 

@@ -1,8 +1,7 @@
 from Config import *
-from direct.directbase import DirectStart
 from direct.showbase import DirectObject
 from panda3d.core import OrthographicLens
-from pandac.PandaModules import *
+from panda3d.core import *
 from direct.interval.IntervalGlobal import LerpPosInterval, LerpScaleInterval, LerpHprInterval, Sequence
 
 class CameraHandler(DirectObject.DirectObject):

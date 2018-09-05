@@ -1,6 +1,8 @@
 from panda3d.core import loadPrcFile
 loadPrcFile("config.prc")
-import direct.directbase.DirectStart
+from panda3d.core import QueuedConnectionManager, QueuedConnectionListener, QueuedConnectionReader
+from direct.showbase.ShowBase import ShowBase
+base = ShowBase()
 from direct.task.Task import Task
 from direct.distributed.PyDatagramIterator import *
 import sys
@@ -32,7 +34,7 @@ class Server:
 
         self.tcpSocket = self.cManager.openTCPServerRendezvous(port, 10)
         self.cListener.addConnection(self.tcpSocket)
-        print "Server listening on port", port
+        print("Server listening on port", port)
 
         taskMgr.add(self.tskListenerPolling, "Poll the connection listener", -39)
         taskMgr.add(self.tskReaderPolling, "Poll the connection reader", -40)
@@ -45,7 +47,7 @@ class Server:
 
     def updateAllPartyLists(self):
         parties = deepcopy(self.parties)
-        for party in parties.values():
+        for party in list(parties.values()):
             del party['map']['tiles']
 
         for player in self.playersinlobby:
@@ -62,7 +64,7 @@ class Server:
                 newConnection = newConnection.p()
                 self.activeConnections.append(newConnection)
                 self.cReader.addConnection(newConnection)
-                print 'A new client is connected', newConnection
+                print('A new client is connected', newConnection)
         return Task.cont
 
     def tskReaderPolling(self, taskdata):
@@ -73,4 +75,4 @@ class Server:
         return Task.cont
 
 Server()
-run()
+base.run()
