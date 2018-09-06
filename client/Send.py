@@ -112,5 +112,6 @@ class Send(object):
         myPyDatagram = PyDatagram()
         myPyDatagram.addString('WAIT')
         myPyDatagram.addString(charid)
-        myPyDatagram.addUint8(direction)
+        # seem direction became str
+        myPyDatagram.addUint8(int(direction))
         self.cWriter.send(myPyDatagram, self.myConnection)

@@ -13,7 +13,7 @@ class DirectionChooser(DirectObject):
         self.camhandler = camhandler
         self.callback = callback
         self.cancelcallback = cancelcallback
-        self.initdir  = self.sprite.realdir
+        self.initdir = self.sprite.realdir
         self.hidir = None
 
         # Textures

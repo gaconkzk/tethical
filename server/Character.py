@@ -1,5 +1,5 @@
 from panda3d.core import loadPrcFile
-loadPrcFile("../config.prc")
+loadPrcFile("config.prc")
 from panda3d.core import *
 import json, random, os
 
