@@ -1,9 +1,9 @@
 import sys
 from panda3d.core import loadPrcFile
 from panda3d.core import ConfigVariableString
-loadPrcFile("config.prc")
+loadPrcFile("Config.prc")
 GAME = ConfigVariableString('game', 'fft').getValue()
-loadPrcFile(GAME+"/config.prc")
+loadPrcFile(GAME+"/Config.prc")
 
 IP = ConfigVariableString('ip', '127.0.0.1').getValue()
 PORT =  int(ConfigVariableString('port', '3001').getValue())

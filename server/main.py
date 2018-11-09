@@ -1,5 +1,5 @@
 from panda3d.core import loadPrcFile
-loadPrcFile("config.prc")
+loadPrcFile("Config.prc")
 from panda3d.core import QueuedConnectionManager, QueuedConnectionListener, QueuedConnectionReader
 from direct.showbase.ShowBase import ShowBase
 base = ShowBase()
