@@ -135,7 +135,7 @@ class Send(object):
         myPyDatagram.addString('ATTACK_SUCCESS')
         myPyDatagram.addString(charid1)
         myPyDatagram.addString(charid2)
-        myPyDatagram.addUint8(damages)
+        myPyDatagram.addUint8(int(damages))
         self.cWriter.send(myPyDatagram, player)
 
     def ATTACK_PASSIVE(self, charid1, charid2, damages, attackables, player):
@@ -143,7 +143,7 @@ class Send(object):
         myPyDatagram.addString('ATTACK_PASSIVE')
         myPyDatagram.addString(charid1)
         myPyDatagram.addString(charid2)
-        myPyDatagram.addUint8(damages)
+        myPyDatagram.addUint8(int(damages))
         myPyDatagram.addString(json.dumps(attackables))
         self.cWriter.send(myPyDatagram, player)
 
